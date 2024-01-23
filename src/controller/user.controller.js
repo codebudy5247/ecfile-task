@@ -32,10 +32,11 @@ exports.registerUser = async (req, res) => {
       $or: [{ phone }, { email }],
     });
 
+    console.log(existedUser);
     if (existedUser) {
       return res.status(409).json({
         status: "error",
-        message: "User with email or username already exists",
+        message: "User with email or phone already exists",
       });
     }
     const user = await User.create({

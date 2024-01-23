@@ -20,7 +20,7 @@ exports.userRegisterValidator = () => {
     body("phone")
       .notEmpty()
       .withMessage("Mobile number is required")
-      .isNumeric()
+      // .isNumeric()
       .withMessage("Mobile number must contain only numbers")
       .isLength({ min: 10, max: 10 })
       .withMessage("Mobile number must be 10 digits long")
