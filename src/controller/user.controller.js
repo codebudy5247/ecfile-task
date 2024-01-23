@@ -29,7 +29,7 @@ exports.registerUser = async (req, res) => {
     const { email, username, phone, password, role } = req.body;
 
     const existedUser = await User.findOne({
-      $or: [{ username }, { email }],
+      $or: [{ phone }, { email }],
     });
 
     if (existedUser) {
@@ -91,6 +91,7 @@ exports.registerUser = async (req, res) => {
         "Users registered successfully and verification email has been sent on your email.",
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -113,6 +114,13 @@ exports.loginUser = async (req, res) => {
       return res.status(404).json({
         status: "error",
         message: "User does not exist",
+      });
+    }
+
+    if(!user.isEmailVerified){
+      return res.status(404).json({
+        status: "error",
+        message: "Please verify your email first!",
       });
     }
 
