@@ -9,7 +9,24 @@ $ git clone https://github.com/codebudy5247/ecfile-task.git
 ```
 // In root Dir
 $ npm install
+
+// create a .env file with these given fields
+NODE_ENV=development
+DB_URL=
+ACCESS_TOKEN_SECRET=
+REFRESH_TOKEN_SECRET=
+ACCESS_TOKEN_EXPIRY=15
+REFRESH_TOKEN_EXPIRY=59
+
+SMPT_SERVICE = 
+EMAIL_HOST = 
+EMAIL_PORT =  
+EMAIL_PASS = 
+EMAIL_USER = 
+
+
 $ npm run dev
+
 
 # Server started on 1337 PORT
 ```
